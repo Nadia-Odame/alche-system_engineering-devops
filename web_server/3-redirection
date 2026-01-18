@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Configure Nginx to redirect /redirect_me
+
+apt-get update -y
+apt-get install -y nginx
+
+sed -i '/server_name _;/a\	location /redirect_me {\nreturn 301 https://github.com/Nadia-Odame;\n}' /etc/nginx/sites-available/default
+
+service nginx restart
